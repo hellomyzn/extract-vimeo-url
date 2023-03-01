@@ -17,7 +17,13 @@ def extract_vimeo_url(path):
 
     # retrieve url from json data
     json_load = json.loads(json_response)
-    print(json_load['request']['files']['progressive'][1]['url'])
+    videos = json_load['request']['files']['progressive']
+
+    for v in videos:
+        if v['quality'] == '720p':
+            print(v['url'])
+
+    
 
 if __name__ == '__main__':
     import sys
